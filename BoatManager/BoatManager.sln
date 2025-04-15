@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "BoatManager.Frontend", "BoatManager.Frontend\BoatManager.Frontend.esproj", "{2DA423C3-3AAE-A843-132E-7117DC5952A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoatManager.Backend", "BoatManager.Backend\BoatManager.Backend.csproj", "{7853DABA-58B4-42D5-AEC6-66CA229DB0C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{2DA423C3-3AAE-A843-132E-7117DC5952A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DA423C3-3AAE-A843-132E-7117DC5952A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2DA423C3-3AAE-A843-132E-7117DC5952A5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7853DABA-58B4-42D5-AEC6-66CA229DB0C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7853DABA-58B4-42D5-AEC6-66CA229DB0C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7853DABA-58B4-42D5-AEC6-66CA229DB0C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7853DABA-58B4-42D5-AEC6-66CA229DB0C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
