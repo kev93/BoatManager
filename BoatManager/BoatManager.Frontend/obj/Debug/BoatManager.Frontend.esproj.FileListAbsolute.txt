@@ -1,0 +1,1 @@
+C:\Users\Kevin\Repos\BoatManager\BoatManager\BoatManager.Frontend\obj\Debug\BoatManager.Frontend.esproj.CoreCompileInputs.cache
