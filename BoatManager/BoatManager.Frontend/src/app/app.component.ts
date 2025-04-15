@@ -15,6 +15,8 @@ export class AppComponent {
   constructor(private boatService: BoatService) { }
 
   ngOnInit(): void {
-    this.boats = this.boatService.getBoats();
+    this.boatService
+      .getBoats()
+      .subscribe((result: Boat[]) => (this.boats = result));
   }
 }
