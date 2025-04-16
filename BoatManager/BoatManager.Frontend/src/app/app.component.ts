@@ -1,22 +1,14 @@
 import { Component } from '@angular/core';
-import { Boat } from '../models/boat';
-import { BoatService } from '../services/boat.service';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @Component({
   selector: 'app-root',
+  imports: [HeaderComponent, HomeComponent],
   templateUrl: './app.component.html',
-  standalone: false,
+  standalone: true,
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'BoatManager.Frontend';
-  boats: Boat[] = [];
-
-  constructor(private boatService: BoatService) { }
-
-  ngOnInit(): void {
-    this.boatService
-      .getBoats()
-      .subscribe((result: Boat[]) => (this.boats = result));
-  }
 }
