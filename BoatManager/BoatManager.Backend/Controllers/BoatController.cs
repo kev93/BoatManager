@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoatManager.Backend.Controllers;
 
@@ -6,14 +7,15 @@ namespace BoatManager.Backend.Controllers;
 [ApiController]
 public class BoatController : ControllerBase
 {
+    private readonly AppDbContext _context;
+    public BoatController(AppDbContext context)
+    {
+        _context = context;        
+    }
+
     [HttpGet]
     public async Task<ActionResult<List<Boat>>> GetBoats()
     {
-        var boats = new List<Boat>();
-        boats.Add(new Boat(1, "my fancy boat", "this is a really nice boat"));
-        boats.Add(new Boat(2, "Boat 2", "also a really nice boat"));
-        boats.Add(new Boat(3, "Boat 3", "this is not so nice"));
-
-        return Ok(boats);
+        return Ok(await _context.Boats.ToListAsync());
     }
 }
