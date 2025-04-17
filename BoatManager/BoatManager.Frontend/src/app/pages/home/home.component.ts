@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Boat } from '../../../models/boat';
 import { BoatService } from '../../../services/boat.service';
+import { AddBoatComponent } from '../../components/add-boat/add-boat.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, AddBoatComponent],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
