@@ -22,6 +22,8 @@ public class BoatController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Boat>> CreateBoat([FromBody] Boat boat)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
         _context.Boats.Add(boat);
         await _context.SaveChangesAsync();
         return Ok(boat);
@@ -30,6 +32,8 @@ public class BoatController : ControllerBase
     [HttpPut]
     public async Task<ActionResult<Boat>> UpdateBoat([FromBody] Boat boat)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
         if (await _context.Boats.AnyAsync(s => s.Id == boat.Id) == false)
             return NotFound();
         _context.Boats.Update(boat);
