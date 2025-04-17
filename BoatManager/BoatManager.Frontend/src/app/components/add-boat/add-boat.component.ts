@@ -18,7 +18,7 @@ export class AddBoatComponent {
 
   constructor(private boatService: BoatService, private fb: FormBuilder) {
     this.boatForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('^[A-Za-zÄÖÜäöü].*')]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       details: ['', [Validators.maxLength(100)]]
     });
   }
