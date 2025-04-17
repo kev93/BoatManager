@@ -15,4 +15,8 @@ export class BoatService {
   public getBoats(): Observable<Boat[]> {
     return this.http.get<Boat[]>(`${this.apiUrl}/Boat`);
   }
+
+  public addBoat(boat: Boat): Observable<Boat> {
+    return this.http.post<Boat>(`${this.apiUrl}/Boat`, boat);
+  }
 }
