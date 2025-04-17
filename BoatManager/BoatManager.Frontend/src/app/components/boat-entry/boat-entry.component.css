@@ -1,0 +1,39 @@
+.entry-container {
+  width: 30rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.entry-container:hover {
+  background-color: #f5f5f5;
+}
+
+.entry-container h3 {
+  margin: 0;
+}
+
+.row-container {
+  display: flex;
+  align-items: center;
+}
+
+.entry-content {
+  width: fit-content;
+  height: fit-content;
+  white-space: nowrap;
+}
+
+.entry-buttons {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  gap: 1rem;
+}
+
+
+
+

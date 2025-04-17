@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Boat } from '../../../models/boat';
 import { BoatService } from '../../../services/boat.service';
 import { AddBoatComponent } from '../../components/add-boat/add-boat.component';
+import { BoatEntryComponent } from '../../components/boat-entry/boat-entry.component';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, AddBoatComponent],
+  imports: [CommonModule, AddBoatComponent, BoatEntryComponent],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
