@@ -4,5 +4,5 @@
 
 <h2>Available Boats</h2>
 <div *ngFor="let boat of boats">
-  <app-boat-entry (deletePressed)="deleteBoat($event)" [boat]="boat"></app-boat-entry>
+  <app-boat-entry (updatePressed)="test($event)" (deletePressed)="deleteBoat($event)" [boat]="boat"></app-boat-entry>
 </div>

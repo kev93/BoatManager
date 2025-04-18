@@ -4,10 +4,12 @@ import { Boat } from '../../../models/boat';
 import { BoatService } from '../../../services/boat.service';
 import { AddBoatComponent } from '../../components/add-boat/add-boat.component';
 import { BoatEntryComponent } from '../../components/boat-entry/boat-entry.component';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, AddBoatComponent, BoatEntryComponent],
+  imports: [CommonModule, AddBoatComponent, BoatEntryComponent, RouterModule],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -15,7 +17,7 @@ import { BoatEntryComponent } from '../../components/boat-entry/boat-entry.compo
 export class HomeComponent {
   boats: Boat[] = [];
 
-  constructor(private boatService: BoatService) { }
+  constructor(private boatService: BoatService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadBoats();
@@ -37,5 +39,13 @@ export class HomeComponent {
         console.error('Error occured while deleting new boat:', err);
       }
     });
+  }
+
+  test(id: string): void {
+    this.gotoBoatUpdatePage();
+  }
+
+  gotoBoatUpdatePage() {
+    this.router.navigate(['/update-boat']);
   }
 }

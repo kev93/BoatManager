@@ -11,11 +11,16 @@ import { Boat } from '../../../models/boat';
 })
 export class BoatEntryComponent {
   @Input() boat!: Boat;
+  @Output() updatePressed = new EventEmitter<string>();
   @Output() deletePressed = new EventEmitter<string>();
   showDetails = false;
 
   toggleDetails() {
     this.showDetails = !this.showDetails;
+  }
+
+  update() {
+    this.updatePressed.emit(this.boat.id);
   }
 
   delete() {
