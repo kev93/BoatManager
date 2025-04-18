@@ -1,9 +1,36 @@
-header{
-    display: flex;
-    padding-inline: 16px;
-    padding-block: 8px;
-    background-color: #333;
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d47a1;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+  .nav-links a {
     color: white;
-    align-items: center;
-    justify-content: space-between;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+
+.active {
+  border-bottom: 2px solid #ffcc00;
 }
