@@ -1,28 +1,68 @@
-form {
+.add-boat-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.boat-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 18rem;
 }
 
-.entry-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.input-container {
-  display: flex;
-  justify-content: end;
-  width: 100%;
-}
-
-input {
+input,
+textarea {
   padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
   font-size: 1rem;
+  transition: border-color 0.2s ease;
 }
 
-button{
-    height:2rem;
-    font-size: 1rem;
+  input:focus,
+  textarea:focus {
+    border-color: #2563eb;
+    outline: none;
+  }
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+  button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #1d4ed8;
+  }
+
+.error {
+  margin-top: 0.25rem;
+  color: #dc2626;
+  font-size: 0.875rem;
 }
