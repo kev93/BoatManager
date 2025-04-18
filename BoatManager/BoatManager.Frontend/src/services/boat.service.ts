@@ -19,4 +19,8 @@ export class BoatService {
   public addBoat(boat: Boat): Observable<Boat> {
     return this.http.post<Boat>(`${this.apiUrl}/Boat`, boat);
   }
+
+  public deleteBoat(id: string): Observable<Boat> {
+    return this.http.delete<Boat>(`${this.apiUrl}/Boat/${id}`);
+  }
 }

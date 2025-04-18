@@ -3,7 +3,7 @@
     <div class="entry-content"><h3>{{ boat.name }}</h3></div>
     <div class="entry-buttons">
       <button>Update</button>
-      <button>Delete</button>
+      <button (click)="delete()">Delete</button>
     </div>
   </div>
   <p *ngIf="showDetails">{{ boat.details }}</p>

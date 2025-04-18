@@ -26,4 +26,16 @@ export class HomeComponent {
       .getBoats()
       .subscribe((result: Boat[]) => (this.boats = result));
   }
+
+  deleteBoat(id: string): void {
+    this.boatService.deleteBoat(id).subscribe({
+      next: (boat: Boat) => {
+        console.log('Boat deleted:', boat);
+        this.loadBoats();
+      },
+      error: (err) => {
+        console.error('Error occured while deleting new boat:', err);
+      }
+    });
+  }
 }
