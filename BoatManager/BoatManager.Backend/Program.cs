@@ -1,5 +1,8 @@
 using BoatManager.Backend;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,27 @@ builder.Services.AddCors(options => options.AddPolicy(name: "BoatOrigins",
         policy.WithOrigins("http://localhost:57211").AllowAnyMethod().AllowAnyHeader();
     }));
 
+var key = "SuperMegaGeheimerSchluesselMitSichererLaenge!"; // Should be in appsettings
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
+    };
+});
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 // Add some pseudo data to the database
@@ -21,10 +45,7 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Boats.AddRange(
-        new Boat("my fancy boat", "this is a really nice boat"),
-        new Boat("Boat 2", "also a really nice boat"),
-        new Boat("Boat 3", "this is not so nice"),
-        new Boat("Another Boat", "this is not so nice")
+        new Boat(Guid.NewGuid(), "my fancy boat", "this is a really nice boat")
     );
     db.SaveChanges();
 }
