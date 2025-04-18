@@ -1,8 +1,8 @@
-<app-add-boat/>
+<app-add-boat (boatAdded)="loadBoats()"/>
 
 <br/>
 
 <h2>Available Boats</h2>
-<div>
-  <app-boat-entry *ngFor="let boat of boats" [boat]="boat"></app-boat-entry>
+<div *ngFor="let boat of boats">
+  <app-boat-entry [boat]="boat"></app-boat-entry>
 </div>

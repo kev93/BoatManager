@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,6 +14,7 @@ import { Boat } from '../../../models/boat';
 })
 
 export class AddBoatComponent {
+  @Output() boatAdded = new EventEmitter<void>();
   boatForm: FormGroup;
 
   constructor(private boatService: BoatService, private fb: FormBuilder) {
@@ -28,8 +29,18 @@ export class AddBoatComponent {
       const { name, details } = this.boatForm.value;
       const id = crypto.randomUUID();
       const newBoat = new Boat(id, name, details);
-      this.boatService.addBoat(newBoat).subscribe((boat: Boat) => console.log('New Boat:', boat));
-      this.boatForm.reset();
+
+      this.boatService.addBoat(newBoat).subscribe({
+        next: (boat: Boat) => {
+          console.log('New Boat:', boat);
+          this.boatAdded.emit();
+        },
+        error: (err) => {
+          console.error('Error occured while adding a new boat:', err);
+        }
+      });
+
+
     }
   }
 }

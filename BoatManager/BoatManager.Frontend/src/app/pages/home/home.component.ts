@@ -18,6 +18,10 @@ export class HomeComponent {
   constructor(private boatService: BoatService) { }
 
   ngOnInit(): void {
+    this.loadBoats();
+  }
+
+  loadBoats(): void {
     this.boatService
       .getBoats()
       .subscribe((result: Boat[]) => (this.boats = result));
