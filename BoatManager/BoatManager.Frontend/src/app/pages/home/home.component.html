@@ -1,8 +1,24 @@
-<app-add-boat (boatAdded)="loadBoats()"/>
+<div class="home-container">
 
-<br/>
+  <!-- Add boat section -->
+  <app-add-boat (boatAdded)="loadBoats()"></app-add-boat>
+  <hr class="divider" />
 
-<h2>Available Boats</h2>
-<div *ngFor="let boat of boats">
-  <app-boat-entry (updatePressed)="gotoBoatUpdatePage($event)" (deletePressed)="deleteBoat($event)" [boat]="boat"></app-boat-entry>
+  <!-- Boat list section -->
+  <section class="list-section">
+    <h2 class="list-title">Available Boats</h2>
+
+    <div *ngIf="boats.length > 0; else noBoats">
+      <div class="boat-list">
+        <app-boat-entry *ngFor="let boat of boats"
+                        [boat]="boat"
+                        (updatePressed)="gotoBoatUpdatePage($event)"
+                        (deletePressed)="deleteBoat($event)"></app-boat-entry>
+      </div>
+    </div>
+
+    <ng-template #noBoats>
+      <p class="empty-state">🚤 No boats available yet. Add one above!</p>
+    </ng-template>
+  </section>
 </div>
