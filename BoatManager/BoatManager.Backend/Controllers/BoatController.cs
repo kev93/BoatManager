@@ -19,6 +19,15 @@ public class BoatController : ControllerBase
         return Ok(await _context.Boats.ToListAsync());
     }
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<List<Boat>>> GetBoatsById([FromRoute] Guid id)
+    {
+        var boat = await _context.Boats.FindAsync(id);
+        if (boat == null)
+            return NotFound();
+        return Ok(boat);
+    }
+
     [HttpPost]
     public async Task<ActionResult<Boat>> CreateBoat([FromBody] Boat boat)
     {
@@ -42,13 +51,13 @@ public class BoatController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteBoat([FromRoute] Guid id)
+    public async Task<ActionResult<Boat>> DeleteBoat([FromRoute] Guid id)
     {
         var boat = await _context.Boats.FindAsync(id);
         if(boat == null)
             return NotFound();
         _context.Boats.Remove(boat);
         await _context.SaveChangesAsync();
-        return Ok();
+        return Ok(boat);
     }
 }
