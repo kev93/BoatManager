@@ -11,11 +11,11 @@ namespace BoatManager.Backend.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly IConfiguration _config;
+    private readonly JwtService _jwtService;
 
-    public AuthController(IConfiguration config)
+    public AuthController(JwtService jwtService)
     {
-        _config = config;
+        _jwtService = jwtService;
     }
 
     [HttpPost("login")]
@@ -24,23 +24,10 @@ public class AuthController : ControllerBase
         // dummy check: here should be a check in the database
         if (login.Username == "admin" && login.Password == "1234")
         {
-            var token = GenerateJwtToken(login.Username);
+            var token = _jwtService.GenerateToken(login.Username);
             return Ok(new { token });
         }
 
         return Unauthorized();
-    }
-
-    private string GenerateJwtToken(string username)
-    {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SuperMegaGeheimerSchluesselMitSichererLaenge!"));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            claims: new[] { new Claim(ClaimTypes.Name, username) },
-            expires: DateTime.Now.AddHours(1),
-            signingCredentials: credentials);
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }
