@@ -13,6 +13,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(private auth: AuthService, private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -32,7 +33,7 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         },
         error: () => {
-          alert('Login fehlgeschlagen');
+          this.errorMessage = 'Username or password is wrong';
         }
       });
     }

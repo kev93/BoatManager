@@ -1,9 +1,13 @@
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
 <div class="login-container">
   <h2>Login</h2>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
     <div class="form-group">
-      <label for="username">User name</label>
+      <label for="username">Username</label>
       <input type="text" id="username" formControlName="username" placeholder="max123" />
     </div>
 
