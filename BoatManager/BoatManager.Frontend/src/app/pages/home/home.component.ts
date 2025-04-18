@@ -41,11 +41,7 @@ export class HomeComponent {
     });
   }
 
-  test(id: string): void {
-    this.gotoBoatUpdatePage();
-  }
-
-  gotoBoatUpdatePage() {
-    this.router.navigate(['/update-boat']);
+  gotoBoatUpdatePage(id: string) {
+    this.router.navigate(['/update-boat', id]);
   }
 }

@@ -5,7 +5,7 @@ import { UpdateBoatComponent } from './pages/update-boat/update-boat.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'update-boat', component: UpdateBoatComponent },
+  { path: 'update-boat/:id', component: UpdateBoatComponent },
 ];
 
 @NgModule({

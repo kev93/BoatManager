@@ -16,8 +16,16 @@ export class BoatService {
     return this.http.get<Boat[]>(`${this.apiUrl}/Boat`);
   }
 
+  public getBoatById(id: string): Observable<Boat> {
+    return this.http.get<Boat>(`${this.apiUrl}/Boat/${id}`);
+  }
+
   public addBoat(boat: Boat): Observable<Boat> {
     return this.http.post<Boat>(`${this.apiUrl}/Boat`, boat);
+  }
+
+  public updateBoat(boat: Boat): Observable<Boat> {
+    return this.http.put<Boat>(`${this.apiUrl}/Boat`, boat);
   }
 
   public deleteBoat(id: string): Observable<Boat> {

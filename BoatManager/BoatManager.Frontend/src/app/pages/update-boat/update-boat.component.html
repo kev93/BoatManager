@@ -1,1 +1,19 @@
-<p>update-boat works!</p>
+<h2> Update boat</h2>
+<form [formGroup]="boatForm" (ngSubmit)="onSubmit()">
+
+  <div class="entry-container">
+    <label for="name">Name</label>
+    <div class="input-container">
+      <input id="name" type="text" formControlName="name" />
+    </div>
+  </div>
+
+  <div class="entry-container">
+    <label for="details">Details</label>
+    <div class="input-container">
+      <input id="details" type="text" formControlName="details" />
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="boatForm.invalid">Update</button>
+</form>
