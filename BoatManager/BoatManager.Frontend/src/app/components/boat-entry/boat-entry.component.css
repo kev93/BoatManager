@@ -1,39 +1,64 @@
-.entry-container {
-  width: 30rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  margin: 10px 0;
+.boat-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+  .boat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+
+.boat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+  .boat-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 0.4rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-.entry-container:hover {
-  background-color: #f5f5f5;
+.update-btn {
+  background-color: #3b82f6;
+  color: white;
 }
 
-.entry-container h3 {
-  margin: 0;
+  .update-btn:hover {
+    background-color: #2563eb;
+  }
+
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
 }
 
-.row-container {
-  display: flex;
-  align-items: center;
+  .delete-btn:hover {
+    background-color: #dc2626;
+  }
+
+.details {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #4b5563;
 }
-
-.entry-content {
-  width: fit-content;
-  height: fit-content;
-  white-space: nowrap;
-}
-
-.entry-buttons {
-  display: flex;
-  justify-content: end;
-  width: 100%;
-  gap: 1rem;
-}
-
-
-
-

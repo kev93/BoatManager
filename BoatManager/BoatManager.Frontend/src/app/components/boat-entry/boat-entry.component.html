@@ -1,10 +1,10 @@
-<div class="entry-container" (click)="toggleDetails()">
-  ﻿<div class="row-container">
-    <div class="entry-content"><h3>{{ boat.name }}</h3></div>
-    <div class="entry-buttons">
-      <button (click)="update()">Update</button>
-      <button (click)="delete()">Delete</button>
+<div class="boat-card" (click)="toggleDetails()">
+  <div class="boat-header">
+    <h3>{{ boat.name }}</h3>
+    <div class="actions">
+      <button class="update-btn" (click)="update(); $event.stopPropagation()">Edit</button>
+      <button class="delete-btn" (click)="delete(); $event.stopPropagation()">Delete</button>
     </div>
   </div>
-  <p *ngIf="showDetails">{{ boat.details }}</p>
+  <p class="details" *ngIf="showDetails">{{ boat.details || 'No details available' }}</p>
 </div>
